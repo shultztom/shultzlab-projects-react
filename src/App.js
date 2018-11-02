@@ -16,35 +16,35 @@ class App extends Component {
         },
         {
           id: 2,
-          img: "/images/xkcdviewer.png",
+          img: "/images/xkcdviewer.PNG",
           text: "XKCD Comic Viewer",
           link: "https://shultztom.github.io/xkcd-viewer-react/",
           github: "https://github.com/shultztom/xkcd-viewer-react"
         },
         {
           id: 3,
-          img: "/images/xkcdapi.png",
+          img: "/images/xkcdapi.PNG",
           text: "XKCD CORS API",
           link: "https://xkcd-cors-api.herokuapp.com/",
           github: "https://github.com/shultztom/xkcd-cors-api"
         },
         {
           id: 4,
-          img: "/images/randomdoggeneratorreact.png",
+          img: "/images/randomdoggeneratorreact.PNG",
           text: "Random Dog Generator",
           link: "https://shultztom.github.io/dog-generator-react/",
           github: "https://github.com/shultztom/dog-generator-react"
         },
         {
           id: 5,
-          img: "/images/dinofacts.png",
+          img: "/images/dinofacts.PNG",
           text: "Dinosaur Facts!",
           link: "https://shultztom.github.io/dinosaur-fact-react/",
           github: "https://github.com/shultztom/dinosaur-fact-react"
         },
         {
           id: 6,
-          img: "/images/dinofactsapi.png",
+          img: "/images/dinofactsapi.PNG",
           text: "Dinosaur Facts! API",
           link: "https://github.com/shultztom/dinosaur-fact-api",
           github: "https://dinosaur-facts-api.herokuapp.com/"
