@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
 
 class App extends Component {
