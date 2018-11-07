@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TechUsed from "./TechUsed";
 
 class Card extends Component {
   render() {
@@ -9,6 +10,11 @@ class Card extends Component {
           <img className="card-img-top" src={data.img} alt="img" />
           <div className="card-body">
             <p className="card-text">{data.text}</p>
+            <ul>
+              {data.techUsed.map(data => (
+                <TechUsed key={data} data={data} />
+              ))}
+            </ul>
             <div className="d-flex justify-content-between align-items-center">
               <div className="btn-group">
                 <button
