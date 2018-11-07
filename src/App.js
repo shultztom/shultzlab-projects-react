@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://192.168.1.92:3100/all")
+    fetch("https://shultzlab.com/shultzlabprojectsapi/all")
       .then(res => res.json())
       .then(
         result => {
