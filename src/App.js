@@ -3,6 +3,7 @@ import Card from "./Card";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
+import Footer from "./Footer";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://shultzlab.com/shultzlabprojectsapi/all")
+    fetch("https://api.shultzlab.com/all")
       .then(res => res.json())
       .then(
         result => {
@@ -72,18 +73,7 @@ class App extends Component {
               </div>
             </div>
           </main>
-
-          <footer className="text-muted">
-            <div className="container">
-              <p>
-                This page is based off of the 'Album' example by Bootstrap. You
-                can view the example
-                <a href="https://getbootstrap.com/docs/4.1/examples/album/">
-                  here
-                </a>
-              </p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       );
     } else {
@@ -129,18 +119,7 @@ class App extends Component {
               </div>
             </div>
           </main>
-
-          <footer className="text-muted">
-            <div className="container">
-              <p>
-                This page is based off of the 'Album' example by Bootstrap. You
-                can view the example
-                <a href="https://getbootstrap.com/docs/4.1/examples/album/">
-                  here
-                </a>
-              </p>
-            </div>
-          </footer>
+          <Footer />
         </div>
       );
     }
