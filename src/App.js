@@ -5,6 +5,9 @@ import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 import "./App.css";
 import Footer from "./Footer";
 
+require("es6-promise").polyfill();
+require("isomorphic-fetch");
+
 class App extends Component {
   constructor(props) {
     super(props);
