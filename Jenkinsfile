@@ -9,15 +9,15 @@ node('master'){
     @Library('react-build-shared-library')_
         
     stage('Setup') {
-        setup
+        setup()
     }
 
     stage('Checkout') {
-        checkout
+        checkout()
     }
 
     stage('Build') {
-        build
+        build()
     }
     
     def remote = [:]
