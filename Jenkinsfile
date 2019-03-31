@@ -30,7 +30,7 @@ node('master'){
 
     withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile', usernameVariable: 'userName')]) {
         remote.user = userName
-        remote.password = password
+        remote.identityFile = keyfile
 
         stage('Deploy') {
             sshCommand remote: remote, command: 'rm -rf /var/www/html/*'
