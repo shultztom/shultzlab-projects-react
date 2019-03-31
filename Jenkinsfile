@@ -28,7 +28,7 @@ node('master'){
     remote.host = "192.168.1.90"
     remote.allowAnyHosts = true
 
-    withCredentials([usernamePassword(credentialsId: 'nginx-username-password', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')) {
+    withCredentials([usernamePassword(credentialsId: 'nginx-username-password', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         remote.user = USERNAME
         remote.password = PASSWORD
         
