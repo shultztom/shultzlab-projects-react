@@ -14,14 +14,25 @@ node('master'){
         } 
     }
 
+    state('Checkout') {
+        checkout([
+            $class: 'GitSCM',
+            branches: scm.branches,
+            doGenerateSubmoduleConfigurations: scm.doGenerateSubmoduleConfigurations,
+            extensions: scm.extensions,
+            userRemoteConfigs: scm.userRemoteConfigs
+        ])
+    }
+
     stage('Build') {
+        sh "yarn install"
         sh "yarn build"
     }
 
     // For Testing
     withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile')]) {
        stage('Check Uptime') {
-        sh "ssh -i ${keyfile} uptime"
+        sh "ssh tks23@192.168.1.90 -i ${keyfile} uptime"
        }
    }
 }
