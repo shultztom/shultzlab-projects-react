@@ -28,13 +28,13 @@ node('master'){
     remote.host = "192.168.1.90"
     remote.allowAnyHosts = true
 
-    withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile', usernameVariable: 'userName')]) {
+    withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: "keyfile", usernameVariable: "userName")]) {
         remote.user = userName
         remote.identityFile = keyfile
 
         stage('Deploy') {
-            sshCommand remote: remote, command: 'rm -rf /var/www/html/*'
-            sshPut remote: remote, from:'build', into: '/var/www/html/'
+            sshCommand remote: remote, command: "rm -rf /var/www/html/*"
+            sshPut remote: remote, from:"build", into: "/var/www/html/"
         }
    }
 
