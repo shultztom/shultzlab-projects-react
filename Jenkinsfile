@@ -23,10 +23,14 @@ node('master'){
         sh "yarn build"
     }
 
-    // For Testing
     withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile')]) {
-       stage('Check Uptime') {
-        sh "ssh tks23@192.168.1.90 -i ${keyfile} uptime"
+       stage('Deploy') {
+        sh "ssh tks23@192.168.1.90 -i ${keyfile} rm -rf /var/www/html/*"
+        sh "scp -r build tks23@192.168.1.90:/var/www/html -i ${keyfile}"
        }
    }
+
+//    stage('Clean Up'){
+       
+//    }
 }
