@@ -25,7 +25,7 @@ node('master'){
 
     withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile')]) {
        stage('Deploy') {
-            sh "ssh tks23@192.168.1.90 -i ${keyfile} \"rm -rf /var/www/html/*\""
+            sh "ssh tks23@192.168.1.90 -i $keyfile \"rm -rf /var/www/html/*\""
             sh "scp -i ${keyfile} -r build tks23@192.168.1.90:/var/www/html"
        }
    }
