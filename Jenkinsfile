@@ -15,6 +15,8 @@ node('master'){
     stage('Checkout') {
         checkoutApplication.checkout()
     }
+    
+    echo env.BRACN_NAME
 
     stage('Build') {
         buildApplication.build()
@@ -30,8 +32,12 @@ node('master'){
         remote.password = PASSWORD
         
         stage('Deploy') {
-            sshCommand remote: remote, command: "rm -rf /var/www/html/*"
-            sshPut remote: remote, from:"build", into: "/var/www/html/"
+            if(env.BRANCH_NAME == 'master'){
+                sshCommand remote: remote, command: "rm -rf /var/www/html/*"
+                sshPut remote: remote, from:"build", into: "/var/www/html/"
+            }else{
+                echo 'Not deploying since not master branch'
+            }
         }
    }
 
