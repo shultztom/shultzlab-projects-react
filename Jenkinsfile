@@ -14,7 +14,7 @@ node('master'){
         } 
     }
 
-    state('Checkout') {
+    stage('Checkout') {
         checkout([
             $class: 'GitSCM',
             branches: scm.branches,
