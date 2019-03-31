@@ -13,11 +13,11 @@ node('master'){
     }
 
     stage('Checkout') {
-        setUpApplication.checkout()
+        checkoutApplication.checkout()
     }
 
     stage('Build') {
-        setUpApplication.build()
+        buildApplication.build()
     }
     
     def remote = [:]
