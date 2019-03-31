@@ -1,7 +1,24 @@
-#!groovy
+#!/usr/bin/env groovy
 
 node('master'){
+    def node = tool name: 'Node11.13', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+    env.PATH = "${node}:${env.PATH}"
+    def npmGlobalPath = sh(script: 'npm bin -g', returnStdout: true).trim()
+    env.PATH = "${npmGlobalPath}:${env.PATH}"
+
     @Library('react-build-shared-library')_
+        
+    stage('Setup') {
+        setup
+    }
+
+    stage('Checkout') {
+        checkout
+    }
+
+    stage('Build') {
+        build
+    }
     
     def remote = [:]
     remote.name = "192.168.1.90"
@@ -20,5 +37,5 @@ node('master'){
 
    stage('Clean Up'){
        sh "rm -rf build"
-   }
+   }    
 }
