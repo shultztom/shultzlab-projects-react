@@ -5,6 +5,11 @@ node('master'){
     env.PATH = "${node}:${env.PATH}"
     def npmGlobalPath = sh(script: 'npm bin -g', returnStdout: true).trim()
     env.PATH = "${npmGlobalPath}:${env.PATH}"
+    
+    def remote = [:]
+    remote.name = "192.168.1.90"
+    remote.host = "192.168.1.90"
+    remote.allowAnyHosts = true
         
     stage('Setup') {
         try {
@@ -23,11 +28,6 @@ node('master'){
         sh "yarn build"
     }
 
-    def remote = [:]
-    remote.name = "192.168.1.90"
-    remote.host = "192.168.1.90"
-    remote.allowAnyHosts = true
-
     withCredentials([usernamePassword(credentialsId: 'nginx-username-password', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         remote.user = USERNAME
         remote.password = PASSWORD
@@ -38,7 +38,7 @@ node('master'){
         }
    }
 
-//    stage('Clean Up'){
-       
-//    }
+   stage('Clean Up'){
+       sh "rm -rf build"
+   }
 }
