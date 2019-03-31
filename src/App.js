@@ -42,7 +42,7 @@ class App extends Component {
             <div className="navbar navbar-dark bg-dark shadow-sm">
               <div className="container d-flex justify-content-between">
                 <a href="/" className="navbar-brand d-flex align-items-center">
-                  <strong>ShultzLab</strong>
+                  <strong>ShultzLab DEV</strong>
                 </a>
               </div>
             </div>
