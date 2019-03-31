@@ -23,11 +23,19 @@ node('master'){
         sh "yarn build"
     }
 
-    withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile')]) {
-       stage('Deploy') {
-            sh "ssh tks23@192.168.1.90 -i $keyfile \"rm -rf /var/www/html/*\""
-            sh "scp -i ${keyfile} -r build tks23@192.168.1.90:/var/www/html"
-       }
+    def remote = [:]
+    remote.name = "192.168.1.90"
+    remote.host = "192.168.1.90"
+    remote.allowAnyHosts = true
+
+    withCredentials([sshUserPrivateKey(credentialsId: "nginx", keyFileVariable: 'keyfile', usernameVariable: 'userName')]) {
+        remote.user = userName
+        remote.password = password
+
+        stage('Deploy') {
+            sshCommand remote: remote, command: 'rm -rf /var/www/html/*'
+            sshPut remote: remote, from:'build', into: '/var/www/html/'
+        }
    }
 
 //    stage('Clean Up'){
