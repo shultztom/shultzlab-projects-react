@@ -36,6 +36,6 @@ node('master'){
    }
 
    stage('Clean Up'){
-       sh "rm -rf build"
+       cleanUpApplication.cleanUp()
    }    
 }
