@@ -21,6 +21,7 @@ node('linux'){
     }
 
     stage('Test'){
+        env.CI=true
         sh "yarn test"
     }
     
