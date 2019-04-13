@@ -15,11 +15,13 @@ node('master'){
     stage('Checkout') {
         checkoutApplication.checkout()
     }
-    
-    echo env.BRACN_NAME
 
     stage('Build') {
         buildApplication.build()
+    }
+
+    stage('Test'){
+        sh "yarn test"
     }
     
     def remote = [:]
