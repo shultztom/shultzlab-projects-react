@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import TechUsed from "./TechUsed";
+import TechUsed from "../TechUsed/TechUsed";
+
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
 class Card extends Component {
   render() {
